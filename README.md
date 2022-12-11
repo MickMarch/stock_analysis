@@ -88,7 +88,7 @@ End If
 
 ##### Runtime of Old Code
 
-![Before_Refactoring_2017](/resources/Before_Refactoring_2017.png) ![Before_Refactoring_2018](/resources/Before_Refactoring_2018.png)
+![Before_Refactoring_2017](/resources/Before_Refactoring_2017.png = 200x200) ![Before_Refactoring_2018](/resources/Before_Refactoring_2018.png)
 
 ---
 
