@@ -82,11 +82,15 @@ If tickers(tickerIndex) <> Cells(i + 1, 1) Then
 End If
 ```
 
+---
+
 #### Results
 
 ##### Runtime of Old Code
 
 ![Before_Refactoring_2017](/resources/Before_Refactoring_2017.png) ![Before_Refactoring_2018](/resources/Before_Refactoring_2018.png)
+
+---
 
 ##### Runtime of New Code
 
