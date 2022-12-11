@@ -20,13 +20,9 @@ The dataset being used is sorted first by the **Ticker** column in **Alphabetica
 
 ### Explanation
 
-<<<<<<< HEAD
 Using the VBA script, an analysis of the data was created. Sorted by ticker symbol, the analysis displays the **Total Daily Volumes** and **Return** amount. 
 The total daily volume is the **sum** of every recorded daily volume for each respective stock. 
 The return column outlines the percentage increase/decrease of stock price from the beginning of the year to the price at end of the year (with Green being a positive return, and Red being a negative return).
-=======
-Using the VBA script, an analysis of the data was created. Sorted by ticker symbol, the analysis displays the **Total Daily Volumes** and **Return** amount. The total daily volume is the **sum** of every recorded daily volume for each respective stock. The return column outlines the percentage increase/decrease of stock price from the beginning of the year to the price at end of the year (with Green being a positive return, and Red being a negative return)
->>>>>>> f8ce91730ca7515d05ba653e26bfc6f28b942da8
 
 
 #### 2017
