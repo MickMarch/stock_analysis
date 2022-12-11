@@ -20,7 +20,7 @@ The dataset being used is sorted first by the **Ticker** column in **Alphabetica
 
 ### Explanation
 
-Using the VBA script, an analysis of the data was created. Sorted by ticker symbol, the analysis displays the **Total Daily Volumes** and **Return** amount. The total daily volume is the **sum** of every recorded daily volume for each respective stock. The return column outlines the percentage increase/decrease of stock price from the beginning of the year to the price at end of the year.
+Using the VBA script, an analysis of the data was created. Sorted by ticker symbol, the analysis displays the **Total Daily Volumes** and **Return** amount. The total daily volume is the **sum** of every recorded daily volume for each respective stock. The return column outlines the percentage increase/decrease of stock price from the beginning of the year to the price at end of the year (with Green being a positive return, and Red being a negative return)
 
 
 #### 2017
@@ -119,8 +119,8 @@ End If
 
 As can be seen from the runtime results from above, there is a clear runtime improvement by:
 
-    * 2017 runtime improvement = (0.2734375 / 0.0859375 -1 ) x 100 = 218.18% faster
-    * 2018 runtime improvement = (0.2734375 / 0.0859375 -1 ) x 100 = 218.18% faster
+* 2017 runtime improvement = (0.2734375 / 0.0859375 -1 ) x 100 = 218.18% faster
+* 2018 runtime improvement = (0.2734375 / 0.0859375 -1 ) x 100 = 218.18% faster
     
 ### Disadvantages of New Code from this VBA Script
 
