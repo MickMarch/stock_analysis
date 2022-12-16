@@ -4,14 +4,19 @@
 
 ### Purpose
 
-The purpose of this project is to ***refactor a VBA script*** that creates a report of the data of daily trade volumes and prices of 12 green stocks from the years **2017** & **2018**. The analysis highlights the following, sorted by stock ticker symbol:
+The purpose of this project is to ***refactor a VBA script*** that creates a report of the data of daily trade volumes and prices of 12 green stocks from the years 2017 & 2018. 
 
-* The **total daily volume** of shares/stocks traded
+1. The main objective is to reduce looping through the entire dataset from 12 times to only 1 time.
+2. The secondary objective is to compare the runtime speeds of the old vs new code.
+
+### Code Functionality
+
+The VBA script creates the following analysis, sorted by stock ticker symbol:
+
+* The **total daily volume** of stocks traded
 * The **annual return** amount
 
-The original script looped through the entire table of stock data by an amount equal to the amount of unique tickers being analyzed. The objective is to get the code to go through the stock data only one time, and to measure the runtime speeds of the old vs new code.
-
-### Important Note for Consideration
+### Important Note About the Dataset
 
 The dataset being used is sorted first by the **Ticker** column in **Alphabetical** order, followed by a secondary sort of the **Date** column in **Ascending** order. The code relies on this format.
  
@@ -42,6 +47,7 @@ The return column outlines the percentage increase/decrease of stock price from 
 The main reason for refactoring the code was due to the code originally going through the entire dataset **12 times**. I needed to refine the code to only going through the list **once**.
 
 The culprit was this initial loop and its application:
+
 `For i = 0 To 11`
 
 The loop was passing through the entire dataset, with a function that was only concerned with the ticker in the tickers array at `tickers(i)`
@@ -50,10 +56,12 @@ The loop was passing through the entire dataset, with a function that was only c
 
 #### New Index Variable
 
-I needed something new to replace the ***tickers*** array indexing instead of a For loop of 0 To 11:
+I needed something new to replace the tickers array indexing instead of a For loop of 0 To 11:
+
 `tickerIndex = 0`
 
 Now I had a new variable for moving through the existing arrays of:
+
 ```
 tickers(tickerIndex)
 tickerVolumes(tickerIndex)
@@ -61,18 +69,10 @@ tickerStartingPrice(tickerIndex)
 tickerEndingPrice(tickerIndex)
 ```
 
-#### Replacing the For Loop
+#### Replacing the "For Loop"
 
-The next step was to increase `tickerIndex` as it went through the dataset. Luckily at the end of the row iteration, I already had a conditional in place that detected the last entry for `tickers(tickerIndex)`, which was previously `tickers(i)`:
-```
-If tickers(tickerIndex) <> Cells(i + 1, 1) Then
-            
-    tickerEndingPrice(tickerIndex) = Cells(i, 6).Value
-            
-End If
-```
+The next step was to find the best place to increase `tickerIndex` as it went through the dataset. Luckily at the end of a row iteration, I already had a conditional in place that detected the last entry for the ticker symbol at `tickers(i)`. This checks to see if the following row's ticker cell differs from the current row's ticker cell. This would mean that the next row is the start of a new stock, and would therefore be a great spot to increase the `tickerIndex` and move to the next ticker symbol. The new code looked like:
 
-This checks to see if the following row's ticker cell differs from the current row's ticker cell. This would mean that the next row is the start of a new stock, and would therefore be a great spot to increase the `tickerIndex`:
 ```
 If tickers(tickerIndex) <> Cells(i + 1, 1) Then
             
