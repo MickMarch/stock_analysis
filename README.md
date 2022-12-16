@@ -73,7 +73,7 @@ tickerEndingPrice(tickerIndex)
 
 The next step was to find the best place to increase `tickerIndex` as it went through the dataset. Luckily at the end of a row iteration, I already had a conditional in place that detected the last entry for the ticker symbol at `tickers(i)`. This checks to see if the following row's ticker cell differs from the current row's ticker cell. This would mean that the next row is the start of a new stock, and would therefore be a great spot to increase the `tickerIndex` and move to the next ticker symbol.
 
-```VBScript
+```VB
 If tickers(tickerIndex) <> Cells(i + 1, 1) Then
             
     tickerEndingPrice(tickerIndex) = Cells(i, 6).Value
