@@ -48,7 +48,9 @@ The main reason for refactoring the code was due to the code originally going th
 
 The culprit was this initial loop and its application:
 
-`For i = 0 To 11`
+```VB
+For i = 0 To 11
+```
 
 The loop was passing through the entire dataset, with a function that was only concerned with the ticker in the tickers array at `tickers(i)`
 
@@ -58,11 +60,13 @@ The loop was passing through the entire dataset, with a function that was only c
 
 I needed something new to replace the tickers array indexing instead of a For loop of 0 To 11:
 
-`tickerIndex = 0`
+```VB
+tickerIndex = 0
+```
 
 Now I had a new variable for moving through the existing arrays of:
 
-```
+```VB
 tickers(tickerIndex)
 tickerVolumes(tickerIndex)
 tickerStartingPrice(tickerIndex)
