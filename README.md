@@ -4,7 +4,7 @@
 
 ### Purpose
 
-The purpose of this project is to ***refactor a VBA script*** that creates a report of the data of daily trade volumes and prices of 12 green stocks from the years 2017 & 2018. 
+The purpose of this project is to ***refactor a VBA script*** that creates a report of the daily trade volumes and prices of 12 green stocks from the years 2017 & 2018. 
 
 1. The main objective is to reduce looping through the entire dataset from 12 times to only 1 time.
 2. The secondary objective is to compare the runtime speeds of the old vs new code.
@@ -48,7 +48,9 @@ The main reason for refactoring the code was due to the code originally going th
 
 The culprit was this initial loop and its application:
 
-`For i = 0 To 11`
+```VB
+For i = 0 To 11
+```
 
 The loop was passing through the entire dataset, with a function that was only concerned with the ticker in the tickers array at `tickers(i)`
 
@@ -58,11 +60,13 @@ The loop was passing through the entire dataset, with a function that was only c
 
 I needed something new to replace the tickers array indexing instead of a For loop of 0 To 11:
 
-`tickerIndex = 0`
+```VB
+tickerIndex = 0
+```
 
 Now I had a new variable for moving through the existing arrays of:
 
-```
+```VB
 tickers(tickerIndex)
 tickerVolumes(tickerIndex)
 tickerStartingPrice(tickerIndex)
@@ -71,9 +75,9 @@ tickerEndingPrice(tickerIndex)
 
 #### Replacing the "For Loop"
 
-The next step was to find the best place to increase `tickerIndex` as it went through the dataset. Luckily at the end of a row iteration, I already had a conditional in place that detected the last entry for the ticker symbol at `tickers(i)`. This checks to see if the following row's ticker cell differs from the current row's ticker cell. This would mean that the next row is the start of a new stock, and would therefore be a great spot to increase the `tickerIndex` and move to the next ticker symbol. The new code looked like:
+The next step was to find the best place to increase `tickerIndex` as it went through the dataset. Luckily at the end of a row iteration, I already had a conditional in place that detected the last entry for the ticker symbol at `tickers(i)`. This checks to see if the following row's ticker cell differs from the current row's ticker cell. This would mean that the next row is the start of a new stock, and would therefore be a great spot to increase the `tickerIndex` and move to the next ticker symbol.
 
-```
+```VB
 If tickers(tickerIndex) <> Cells(i + 1, 1) Then
             
     tickerEndingPrice(tickerIndex) = Cells(i, 6).Value
